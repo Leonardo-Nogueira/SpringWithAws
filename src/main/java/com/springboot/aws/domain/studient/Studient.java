@@ -20,15 +20,14 @@ public class Studient {
     private Integer age;
     private String email;
     private String phone;
-    private Room RoomStudient;
+    private String roomId;
 
     public Studient(StudientDTO studientDTO){
         this.name=studientDTO.name();
         this.age=studientDTO.age();
         this.email=studientDTO.email();
         this.phone=studientDTO.phone();
+        this.roomId=studientDTO.roomId();
     }
-
-
 
 }

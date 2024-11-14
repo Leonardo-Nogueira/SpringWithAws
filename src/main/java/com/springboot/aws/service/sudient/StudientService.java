@@ -26,9 +26,9 @@ public class StudientService {
     public Studient createStudient(StudientDTO studientDTO){
         Studient newStudient = new Studient(studientDTO);
 
-        if(studientDTO.roomStudient() != null){
-            Room roomStudient = this.roomService.getByIdRoom(studientDTO.roomStudient());
-            newStudient.setRoomStudient(roomStudient);
+        if(studientDTO.roomId() != null){
+            Room roomStudient = this.roomService.getByIdRoom(studientDTO.roomId());
+            newStudient.setRoomId(roomStudient.getId());
         }
         this.studientRepository.save(newStudient);
         return newStudient;
@@ -47,9 +47,9 @@ public class StudientService {
         if(studientDTO.age() != null) newStudient.setAge(studientDTO.age());
         if(!studientDTO.email().isEmpty()) newStudient.setEmail(studientDTO.email());
         if(!studientDTO.phone().isEmpty()) newStudient.setPhone(studientDTO.phone());
-        if(studientDTO.roomStudient() != null){
-            Room roomStudient = this.roomService.getByIdRoom(studientDTO.roomStudient());
-            newStudient.setRoomStudient(roomStudient);
+        if(studientDTO.roomId() != null){
+            Room roomStudient = this.roomService.getByIdRoom(studientDTO.roomId());
+            newStudient.setRoomId(roomStudient.getId());
         }
 
         this.studientRepository.save(newStudient);
@@ -62,8 +62,6 @@ public class StudientService {
     }
 
     public Studient getByIdStudient(String id){
-        List<Studient> studients = this.studientRepository.findAll();
-        Optional<Studient> studient = this.studientRepository.findById(studients.get(0).getId());
-        return studient.get();
+        return this.studientRepository.findById(id).orElseThrow(StudientNotFoundException::new);
     }
 }
