@@ -1,10 +1,7 @@
 package com.springboot.aws.domain.studient;
 
 import com.springboot.aws.domain.room.Room;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,11 +10,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "studient")
+@EqualsAndHashCode
+@Document(collection = "teste")
 public class Studient {
 
     @Id
-    private String Id;
+    private String id;
     private String name;
     private Integer age;
     private String email;

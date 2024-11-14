@@ -9,26 +9,25 @@ import com.springboot.aws.domain.studient.StudientNotFoundException;
 import com.springboot.aws.repository.RoomRepository;
 import com.springboot.aws.repository.StudientRepository;
 import com.springboot.aws.service.room.RoomService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class StudientService {
 
     private final RoomService roomService;
     private final StudientRepository studientRepository;
 
-    public StudientService(StudientRepository studientRepository, RoomService roomService){
-        this.studientRepository = studientRepository;
-        this.roomService=roomService;
-    }
 
     public Studient createStudient(StudientDTO studientDTO){
         Studient newStudient = new Studient(studientDTO);
 
-        if(!studientDTO.roomStudient().isEmpty()){
-            Room roomStudient = this.roomService.findRoomById(studientDTO.roomStudient());
+        if(studientDTO.roomStudient() != null){
+            Room roomStudient = this.roomService.getByIdRoom(studientDTO.roomStudient());
             newStudient.setRoomStudient(roomStudient);
         }
         this.studientRepository.save(newStudient);
@@ -40,14 +39,16 @@ public class StudientService {
     }
 
     public Studient updateStudient(String id, StudientDTO studientDTO){
+        System.out.println(id);
+
         Studient newStudient = this.studientRepository.findById(id).orElseThrow(StudientNotFoundException::new);
 
         if(!studientDTO.name().isEmpty()) newStudient.setName(studientDTO.name());
         if(studientDTO.age() != null) newStudient.setAge(studientDTO.age());
         if(!studientDTO.email().isEmpty()) newStudient.setEmail(studientDTO.email());
         if(!studientDTO.phone().isEmpty()) newStudient.setPhone(studientDTO.phone());
-        if(!studientDTO.roomStudient().isEmpty()){
-            Room roomStudient = this.roomService.findRoomById(studientDTO.roomStudient());
+        if(studientDTO.roomStudient() != null){
+            Room roomStudient = this.roomService.getByIdRoom(studientDTO.roomStudient());
             newStudient.setRoomStudient(roomStudient);
         }
 
@@ -58,5 +59,11 @@ public class StudientService {
     public void deleteStudient(String id){
         Studient studientDeleted = this.studientRepository.findById(id).orElseThrow(StudientNotFoundException::new);
         this.studientRepository.delete(studientDeleted);
+    }
+
+    public Studient getByIdStudient(String id){
+        List<Studient> studients = this.studientRepository.findAll();
+        Optional<Studient> studient = this.studientRepository.findById(studients.get(0).getId());
+        return studient.get();
     }
 }

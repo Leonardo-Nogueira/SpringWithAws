@@ -41,7 +41,7 @@ public class RoomService {
         this.roomRepository.delete(roomDeleted);
     }
 
-    public Room findRoomById(String id){
+    public Room getByIdRoom(String id){
         return this.roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);
     }
 

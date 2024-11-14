@@ -43,4 +43,9 @@ public class RoomController {
         this.roomService.deleteRoom(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Room> getByIdRoom(@PathVariable("id") String id){
+        return ResponseEntity.ok().body(this.roomService.getByIdRoom(id));
+    }
 }
