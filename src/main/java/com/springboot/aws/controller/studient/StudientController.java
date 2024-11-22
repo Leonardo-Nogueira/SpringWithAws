@@ -1,4 +1,4 @@
-package com.springboot.aws.controller;
+package com.springboot.aws.controller.studient;
 
 import com.springboot.aws.domain.studient.Studient;
 import com.springboot.aws.domain.studient.StudientDTO;

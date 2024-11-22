@@ -1,4 +1,4 @@
-package com.springboot.aws.repository;
+package com.springboot.aws.repository.studient;
 
 import com.springboot.aws.domain.studient.Studient;
 import org.springframework.data.mongodb.repository.MongoRepository;

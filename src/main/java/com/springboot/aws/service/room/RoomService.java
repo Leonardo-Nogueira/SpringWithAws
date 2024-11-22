@@ -1,9 +1,11 @@
 package com.springboot.aws.service.room;
 
+import com.springboot.aws.domain.aws.MessageAwsDTO;
 import com.springboot.aws.domain.room.Room;
 import com.springboot.aws.domain.room.RoomDTO;
 import com.springboot.aws.domain.room.RoomNotFoundException;
-import com.springboot.aws.repository.RoomRepository;
+import com.springboot.aws.repository.room.RoomRepository;
+import com.springboot.aws.service.aws.AwsService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,14 +14,17 @@ import java.util.List;
 public class RoomService {
 
     private final RoomRepository roomRepository;
+    private final AwsService awsService;
 
-    public RoomService(RoomRepository classRepository){
+    public RoomService(RoomRepository classRepository, AwsService awsService){
         this.roomRepository = classRepository;
+        this.awsService=awsService;
     }
 
     public Room createRoom(RoomDTO roomDTO){
         Room newRoom = new Room(roomDTO);
         this.roomRepository.save(newRoom);
+        this.awsService.publishMessage(new MessageAwsDTO(newRoom.toString()));
         return newRoom;
     }
 
@@ -33,6 +38,7 @@ public class RoomService {
         if(!roomDTO.description().isEmpty()) newRoom.setDescription(roomDTO.description());
         if(!roomDTO.block().isEmpty()) newRoom.setBlock(roomDTO.block());
         this.roomRepository.save(newRoom);
+        this.awsService.publishMessage(new MessageAwsDTO(newRoom.toString()));
         return newRoom;
     }
 

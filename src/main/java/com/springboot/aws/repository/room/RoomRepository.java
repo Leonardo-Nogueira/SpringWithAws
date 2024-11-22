@@ -1,4 +1,4 @@
-package com.springboot.aws.repository;
+package com.springboot.aws.repository.room;
 
 import com.springboot.aws.domain.room.Room;
 import org.springframework.data.mongodb.repository.MongoRepository;

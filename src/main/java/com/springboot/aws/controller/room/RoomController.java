@@ -1,4 +1,4 @@
-package com.springboot.aws.controller;
+package com.springboot.aws.controller.room;
 
 
 import com.springboot.aws.domain.room.Room;
