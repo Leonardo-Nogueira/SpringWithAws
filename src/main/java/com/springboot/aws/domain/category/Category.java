@@ -1,4 +1,4 @@
-package com.springboot.aws.domain.room;
+package com.springboot.aws.domain.category;
 
 
 import lombok.AllArgsConstructor;
@@ -13,32 +13,28 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "room")
-public class Room {
+@Document(collection = "categories")
+public class Category {
 
     @Id
     private String id;
-    private String name;
+    private String titleName;
     private String ownerId;
     private String description;
-    private String block;
 
-    public Room(RoomDTO roomDTO){
-        this.name = roomDTO.name();
-        this.description = roomDTO.description();
-        this.ownerId = roomDTO.ownerId();
-        this.block = roomDTO.block();
+    public Category(CategoryDTO categoryDTO){
+        this.titleName = categoryDTO.titleName();
+        this.description = categoryDTO.description();
+        this.ownerId = categoryDTO.ownerId();
     }
 
     @Override
     public String toString(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id",this.id);
-        jsonObject.put("name",this.name);
+        jsonObject.put("name",this.titleName);
         jsonObject.put("ownerId",this.ownerId);
         jsonObject.put("description",this.description);
-        jsonObject.put("block",this.block);
-        jsonObject.put("type","room");
         return jsonObject.toString();
     }
 }

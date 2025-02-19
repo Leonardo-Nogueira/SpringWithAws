@@ -18,8 +18,8 @@ public class AwsConfig {
     private String accessKeyId;
     @Value("${aws.secretKey}")
     private String secretKey;
-    @Value("${aws.sns.topic.room.arn}")
-    private String roomArn;
+    @Value("${aws.sns.topic.catalog.arn}")
+    private String arn;
 
     @Bean
     public AmazonSNS amazonSNSBuilder(){
@@ -27,9 +27,9 @@ public class AwsConfig {
         return AmazonSNSClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(secret)).withRegion(region).build();
     }
 
-    @Bean(name="roomEventTopic")
+    @Bean(name="catalogEventTopic")
     public Topic snsRoomTopicBuild(){
-        return new Topic().withTopicArn(roomArn);
+        return new Topic().withTopicArn(arn);
     }
 
 

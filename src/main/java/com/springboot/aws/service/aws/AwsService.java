@@ -12,15 +12,15 @@ public class AwsService {
 
     private AmazonSNS amazonSNS;
 
-    private Topic roomTopic;
+    private Topic topic;
 
-    public AwsService(@Qualifier("roomEventTopic") Topic roomTopic, AmazonSNS amazonSNS) {
-        this.roomTopic = roomTopic;
+    public AwsService(@Qualifier("catalogEventTopic") Topic topic, AmazonSNS amazonSNS) {
+        this.topic = topic;
         this.amazonSNS = amazonSNS;
     }
 
     public void publishMessage(MessageAwsDTO messageAwsDTO){
-        this.amazonSNS.publish(roomTopic.getTopicArn(), messageAwsDTO.message());
+        this.amazonSNS.publish(topic.getTopicArn(), messageAwsDTO.message());
 
     }
 }
