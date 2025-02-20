@@ -2,7 +2,7 @@ package com.springboot.aws.controller.studient;
 
 import com.springboot.aws.domain.product.Product;
 import com.springboot.aws.domain.product.ProductDTO;
-import com.springboot.aws.service.sudient.ProductService;
+import com.springboot.aws.service.product.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

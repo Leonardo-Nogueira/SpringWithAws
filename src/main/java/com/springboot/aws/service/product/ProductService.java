@@ -1,14 +1,13 @@
-package com.springboot.aws.service.sudient;
+package com.springboot.aws.service.product;
 
 import com.springboot.aws.domain.aws.MessageAwsDTO;
 import com.springboot.aws.domain.category.Category;
-import com.springboot.aws.domain.category.CategoryNotFoundException;
 import com.springboot.aws.domain.product.Product;
 import com.springboot.aws.domain.product.ProductDTO;
 import com.springboot.aws.domain.product.ProductNotFoundException;
 import com.springboot.aws.repository.product.ProductRepository;
 import com.springboot.aws.service.aws.AwsService;
-import com.springboot.aws.service.room.CategoryService;
+import com.springboot.aws.service.category.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -63,6 +62,7 @@ public class ProductService {
     public void deleteProduct(String id){
         Product productDeleted = this.productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
         this.productRepository.delete(productDeleted);
+        this.awsService.publishMessage(new MessageAwsDTO(productDeleted.deleteToString()));
     }
 
     public Product getByIdProduct(String id){

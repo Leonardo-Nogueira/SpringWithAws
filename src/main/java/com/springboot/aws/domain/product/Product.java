@@ -31,5 +31,29 @@ public class Product {
         this.category=productDTO.category();
     }
 
+    @Override
+    public String toString(){
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id",this.id);
+        jsonObject.put("name",this.titleName);
+        jsonObject.put("ownerId",this.ownerId);
+        jsonObject.put("description",this.description);
+        jsonObject.put("price",this.price);
+        jsonObject.put("category",this.category);
+        jsonObject.put("type","produto");
+
+        return jsonObject.toString();
+    }
+
+    public String deleteToString(){
+        JSONObject json = new JSONObject();
+        json.put("id", this.id);
+        json.put("ownerId", this.ownerId);
+        json.put("type", "delete-produto");
+
+        return json.toString();
+    }
+
 
 }

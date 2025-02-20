@@ -1,4 +1,4 @@
-package com.springboot.aws.service.room;
+package com.springboot.aws.service.category;
 
 import com.springboot.aws.domain.aws.MessageAwsDTO;
 import com.springboot.aws.domain.category.Category;
@@ -47,6 +47,7 @@ public class CategoryService {
 
     public void deleteRoom(String id){
         Category categoryDeleted = this.categoryRepository.findById(id).orElseThrow(CategoryNotFoundException::new);
+        this.awsService.publishMessage(new MessageAwsDTO(categoryDeleted.deleteToString()));
         this.categoryRepository.delete(categoryDeleted);
     }
 

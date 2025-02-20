@@ -3,7 +3,7 @@ package com.springboot.aws.controller.room;
 
 import com.springboot.aws.domain.category.Category;
 import com.springboot.aws.domain.category.CategoryDTO;
-import com.springboot.aws.service.room.CategoryService;
+import com.springboot.aws.service.category.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
