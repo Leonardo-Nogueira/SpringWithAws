@@ -9,9 +9,9 @@ services:
     depends_on:
       - mongo
     environment:
-      - aws.accessKeyId=AKIAWOAVR7SQKN2ZKRGF
-      - aws.secretKey=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
-      - aws.sns.topic.catalog.arn=arn:aws:sns:us-east-1:442426850464:catalogs-emit
+      - aws.accessKeyId=
+      - aws.secretKey=
+      - aws.sns.topic.catalog.arn=
 
   mongo:
     image: mongo
