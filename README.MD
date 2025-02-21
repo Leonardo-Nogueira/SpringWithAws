@@ -1,5 +1,4 @@
-# Restaurant Marketplace
-## AnotaAi Backend Challenge
+# Catalogo Marketplace
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
@@ -8,9 +7,7 @@
 ![Docker](https://img.shields.io/badge/docker-257bd6?style=for-the-badge&logo=docker&logoColor=white)
 ![DockerCompose](https://img.shields.io/badge/Docker-Compose-blue?style=for-the-badge&logo=docker&logoColor=white)
 
-
 Este projeto foi criado utilizando **Java, Java Spring, AWS SQS, SNS, Lambda, S3 Mongo DB and docker compose.**
-
 
 ## Table of Contents
 
