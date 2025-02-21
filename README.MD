@@ -9,13 +9,13 @@
 
 Este projeto foi criado utilizando **Java, Java Spring, AWS SQS, SNS, Lambda, S3 Mongo DB and docker compose.**
 
-## Table of Contents
+## Indice
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 
-## Installation
+## Instalação
 
 1. Clone o repositorio:
 
